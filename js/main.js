@@ -27,7 +27,7 @@ let multi = [[red], [black], [even], [odd], [frst12], [scnd12], [thrd12], [frsth
 let wheelNum = Math.floor((Math.random() * 36) + 1); 34
 let credit = 500;
 let totals = [];
-var sec = 0;
+var sec = 11;
 // let div.one = ;
 // let div.five = ;
 // let div.ten = ;
@@ -67,7 +67,6 @@ function init() {
     ];
     wheelNum;
     console.log(wheelNum);
-    // render();
 }
 
 function placeBet (evt) {
@@ -79,27 +78,10 @@ function placeBet (evt) {
     let fired = false;
     console.log(rIdx);
     changeBoard(board, cIdx, rIdx);
-    if (sec === 0) {
+    if (sec === 11) {
         timer ();
     }
     document.getElementById(`c${cIdx}r${rIdx}`).style.backgroundImage = "url('css/images/chip.svg')";
-    // timer ();
-    // Element.onClick = function() {
-    //     if(!fired) {
-    //         fired=true;
-    //         timer();
-    //         function timer(){
-    //             var sec = 10;
-    //             var timer = setInterval(function(){
-    //                 document.getElementById('timer').innerHTML= '00:'+sec;
-    //                 sec--;
-    //                 if (sec < 0) {
-    //                     clearInterval(timer);
-    //                 }
-    //             }, 1000);
-    //         }
-    //     }
-    // }
     function timer(){
         sec = 10;
         var timer = setInterval(function(){
@@ -109,7 +91,13 @@ function placeBet (evt) {
                 clearInterval(timer);
             }
         }, 1000);
-        window.setTimeout(console.log('winner'), 10500)
+        // window.setTimeout(console.log('winner'), 10500);
+        function time(){
+            setTimeout(()=>{
+                winner();
+            }, 10500)
+        }
+        time();
     }
         function changeBoard (b, c, r) {
             if (b[c][r].bet === false) {
@@ -119,15 +107,10 @@ function placeBet (evt) {
                 alert('Bet has already been placed here'); 
             }
         }
-        // function timer(){
-
-        // }
 }
 
 function winner () {
     board.forEach((x, y) => {
-        totals.push(x.filter(b => b.bets === true))
+        totals.push(x.filter(b => b.bet === true))
     } 
     )};
-winner();
-    console.log(totals);

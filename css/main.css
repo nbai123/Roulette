@@ -9,14 +9,21 @@ body {
     position: auto;
 }
 
+/* tr {
+    display: flex;
+    flex-direction: row;
+} */
+
 tr {
     display: table-cell;
 }
 
-/* td {
-    display: table-cell;
+td {
+    transform: rotate(540deg);
+}
+/* .board{
+    transform: rotateX(180deg);
 } */
-
 div.cell {
     position: fill;
     display: flex;
@@ -34,6 +41,14 @@ div.cell {
 div {
     display: flex;
     float: left;
+}
+
+div.cell:hover {
+    background-color: lightblue;
+}
+
+div.bigCell:hover {
+    background-color: lightblue;
 }
 /* .board {
     -moz-transform: scaleX(-1);
