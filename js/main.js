@@ -1,8 +1,9 @@
 /*----- constants -----*/ 
-
+const chipImg = new Image();
+chipImg.src = 'css/images/chip.svg'
 
 /*----- app's state (variables) -----*/ 
-let player, winner, winningNum, bet, board, totalBet;
+let player, winningNum, bet, board, totalBet;
 
 
 
@@ -23,8 +24,10 @@ let frstrow = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
 let scndrow = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35];
 let thrdrow = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36];
 let multi = [[red], [black], [even], [odd], [frst12], [scnd12], [thrd12], [frsthalf], [scndhalf], [frstrow], [scndrow], [thrdrow]];
-let wheelNum = Math.floor((Math.random() * 36) + 1);
+let wheelNum = Math.floor((Math.random() * 36) + 1); 34
 let credit = 500;
+let totals = [];
+var sec = 0;
 // let div.one = ;
 // let div.five = ;
 // let div.ten = ;
@@ -73,9 +76,41 @@ function placeBet (evt) {
     console.log(cIdx);
     let rowIdx = targetId.substring(targetId.length - 2).replace('r','');
     let rIdx = parseInt(rowIdx);
+    let fired = false;
     console.log(rIdx);
     changeBoard(board, cIdx, rIdx);
-    // startTimer(10);
+    if (sec === 0) {
+        timer ();
+    }
+    document.getElementById(`c${cIdx}r${rIdx}`).style.backgroundImage = "url('css/images/chip.svg')";
+    // timer ();
+    // Element.onClick = function() {
+    //     if(!fired) {
+    //         fired=true;
+    //         timer();
+    //         function timer(){
+    //             var sec = 10;
+    //             var timer = setInterval(function(){
+    //                 document.getElementById('timer').innerHTML= '00:'+sec;
+    //                 sec--;
+    //                 if (sec < 0) {
+    //                     clearInterval(timer);
+    //                 }
+    //             }, 1000);
+    //         }
+    //     }
+    // }
+    function timer(){
+        sec = 10;
+        var timer = setInterval(function(){
+            document.getElementById('timer').innerHTML= '00:'+sec;
+            sec--;
+            if (sec < 0) {
+                clearInterval(timer);
+            }
+        }, 1000);
+        window.setTimeout(console.log('winner'), 10500)
+    }
         function changeBoard (b, c, r) {
             if (b[c][r].bet === false) {
                 b[c][r].bet = true;
@@ -84,40 +119,15 @@ function placeBet (evt) {
                 alert('Bet has already been placed here'); 
             }
         }
-            // function totalBet () {
-
-            // }
-            // let count=10;
-            // let counter=setInterval(timer, 1000);
-            // function timer() {
-            //   count=count-1;
-            //   if (count <= 0) {
-            //      clearInterval(counter);
-            //   }
-            
-            // document.getElementById("timer").innerHTML=count;
-            // }
-        
-        // window.onload = function () {
-        //     var fiveMinutes = 60 * 5,
-        //         display = document.querySelector('#timer');
-        //     startTimer(fiveMinutes, display);
-        
-        
+        // function timer(){
 
         // }
-// render();
-    }
-// function value () {
+}
 
-// // }
-
-// function render(){
-//     board.forEach(function (colArr, ))
-// }
-// // console.log(board.filter(true));
-// function winner () {
-//     board.forEach(function (wheelNum) {
-//         if wheelNum === board.number;
-//     }   
-// )}
+function winner () {
+    board.forEach((x, y) => {
+        totals.push(x.filter(b => b.bets === true))
+    } 
+    )};
+winner();
+    console.log(totals);

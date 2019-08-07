@@ -1,12 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    position: auto;
 }
 
-.board {
-
+tr {
+    display: table-cell;
 }
+
+/* td {
+    display: table-cell;
+} */
+
+div.cell {
+    position: fill;
+    display: flex;
+    flex-direction: column;
+    border: solid black;
+    transform: rotate(-90deg);
+    padding: 10px;
+    margin: 5px;
+    align-items: center;
+    float: left;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+div {
+    display: flex;
+    float: left;
+}
+/* .board {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: invert(10%);
+    -ms-filter: "FlipH";
+} */
 
 .credits {
 
