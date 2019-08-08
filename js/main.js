@@ -3,12 +3,7 @@ const chipImg = new Image();
 chipImg.src = 'css/images/chip.svg'
 
 /*----- app's state (variables) -----*/ 
-let player, winningNum, bet, board, totalBet;
-
-
-
-
-
+let player, winningNum, bet, board, totalBet, wheelNum, allCells;
 
 /*----- cached element references -----*/
 let red = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
@@ -24,7 +19,7 @@ let frstrow = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
 let scndrow = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35];
 let thrdrow = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36];
 let multi = [[red], [black], [even], [odd], [frst12], [scnd12], [thrd12], [frsthalf], [scndhalf], [frstrow], [scndrow], [thrdrow]];
-let wheelNum = Math.floor((Math.random() * 36) + 1); 34
+// let wheelNum = Math.floor((Math.random() * 36) + 1);
 let credit = 500;
 let totals = [];
 var sec = 11;
@@ -36,6 +31,13 @@ var sec = 11;
 
 /*----- event listeners -----*/ 
 document.querySelector('table.board').addEventListener('click', placeBet);
+allCells = document.getElementsByClassName(`cell`)
+console.log(allCells)
+
+// for(var i = 0; i < allCells.length; i++){
+//     // console.log("HELLO", allCells[i])
+//     allCells[i].style.backgroundImage = ''
+// } 
 //on click input value of bet selected
 //on click select 1-18, 19-36, even, odds, red, black, 1st 12, 2nd 12, last 12
 //on click reset button clears board and resets credit limit
@@ -65,7 +67,17 @@ function init() {
         [0, {number: 34, bet: false, color: red, parity: even}, {number: 35, bet: false, color: black, parity: odd}, {number: 36, bet: false, color: red, parity: even}, 0],
         [{number: [scndhalf], bet: false}, {number: [frstrow], bet: false}, {number: [scndrow], bet: false}, {number: [thrdrow], bet: false}, 0]
     ];
-    wheelNum;
+    sec = 11;
+    totals = [];
+    for(var i = 0; i < allCells.length; i++){
+        // console.log("HELLO", allCells[i])
+        allCells[i].style.backgroundImage = ''
+    } 
+    // allCells.forEach(c => {
+    //     console.log(c)
+    // })
+    // wheelNum;
+    wheelNum = Math.floor((Math.random() * 36) + 1);
     console.log(wheelNum);
 }
 
@@ -83,7 +95,7 @@ function placeBet (evt) {
     }
     document.getElementById(`c${cIdx}r${rIdx}`).style.backgroundImage = "url('css/images/chip.svg')";
     function timer(){
-        sec = 10;
+        sec = 2;
         var timer = setInterval(function(){
             document.getElementById('timer').innerHTML= '00:'+sec;
             sec--;
@@ -91,11 +103,10 @@ function placeBet (evt) {
                 clearInterval(timer);
             }
         }, 1000);
-        // window.setTimeout(console.log('winner'), 10500);
         function time(){
             setTimeout(()=>{
                 winner();
-            }, 10500)
+            }, 4000)
         }
         time();
     }
@@ -107,10 +118,29 @@ function placeBet (evt) {
                 alert('Bet has already been placed here'); 
             }
         }
-}
+    }
 
 function winner () {
     board.forEach((x, y) => {
         totals.push(x.filter(b => b.bet === true))
-    } 
-    )};
+    });
+    check();
+};
+
+function check(){ 
+    totals.forEach(function(x, y) {
+        x.forEach(function(i, j) {
+            if (wheelNum === i.number) {
+                alert('Congrats you hit!');
+                init();
+                return;
+             } 
+            else {
+                alert('Better luck next time!');
+                init();
+            }
+        })
+    })
+    // alert("lose")
+    // init();
+};

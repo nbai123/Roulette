@@ -19,23 +19,26 @@ tr {
 }
 
 td {
-    transform: rotate(540deg);
+    transform: rotate(180deg);
 }
-/* .board{
-    transform: rotateX(180deg);
-} */
+
+.board {
+    background-color: green;
+}
+
 div.cell {
     position: fill;
     display: flex;
     flex-direction: column;
     border: solid black;
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
     padding: 10px;
     margin: 5px;
     align-items: center;
     float: left;
     grid-template-columns: repeat(13, 1fr);
     grid-template-rows: repeat(5, 1fr);
+    color: white;
 }
 
 div {
@@ -50,28 +53,10 @@ div.cell:hover {
 div.bigCell:hover {
     background-color: lightblue;
 }
-/* .board {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: invert(10%);
-    -ms-filter: "FlipH";
-} */
 
-.credits {
-
+div.bigCell {
+    visibility: hidden;
 }
 
-.totalBets {
 
-}
-
-.payouts {
-
-}
-
-.previousNum {
-
-}
 
