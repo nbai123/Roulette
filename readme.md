@@ -9,10 +9,10 @@ A web browser based application based on the game of roulette.
 HTML, CSS, JavaScript
 
 ## Getting Started
-
+https://i.imgur.com/mA6BBDv.png
 <https://nbai123.github.io/Roulette/>
 
-![Image of Roulette](https://imgur.com/a/YkBcoZg)
+![Image of Roulette](https://i.imgur.com/mA6BBDv.png)
 
 Click on a number in the baord to place a "bet" on a number.
 Once a number is clicked a 10 second timer will begin.
