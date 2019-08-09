@@ -4,8 +4,6 @@
 
 body {
     display: grid;
-    /* grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(5, 1fr); */
     position: auto;
     background-color: green;
 }
@@ -33,8 +31,6 @@ div.cell {
     align-items: center;
     float: left;
     font-size: 36px;
-    /* grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(5, 1fr); */
     color: white;
     size: fill;
 }
@@ -72,7 +68,6 @@ button {
 }
 
 h2 {
-    /* padding: 10px; */
     margin: 5px;
 }
 

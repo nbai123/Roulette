@@ -12,6 +12,8 @@ HTML, CSS, JavaScript
 
 <https://nbai123.github.io/Roulette/>
 
+![Image of Roulette](https://imgur.com/a/YkBcoZg)
+
 Click on a number in the baord to place a "bet" on a number.
 Once a number is clicked a 10 second timer will begin.
 Once the timer starts user has 10 seconds to place bets across the board.

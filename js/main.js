@@ -54,7 +54,7 @@ function init() {
     ];
     sec = 11;
     totals = [];
-    for(var i = 0; i < allCells.length; i++){
+    for(let i = 0; i < allCells.length; i++){
         allCells[i].style.backgroundImage = '';
     };
     wheelNum = Math.floor((Math.random() * 36) + 1);
@@ -73,7 +73,7 @@ function placeBet (evt) {
     document.getElementById(`c${cIdx}r${rIdx}`).style.backgroundImage = "url('css/images/chip.svg')";
     function timer(){
         sec = 10;
-        var timer = setInterval(function(){
+        let timer = setInterval(function(){
             betTime.innerHTML = 'Bet timer: '+sec;
             msg.style.visibility = "visible";
             msg.innerHTML = 'Spinning';
@@ -83,7 +83,7 @@ function placeBet (evt) {
                 clearInterval(randomNum)
             }
         }, 1000);
-        var randomNum = setInterval(()=>{
+        let randomNum = setInterval(()=>{
             rNum.style.visibility = "visible";
             rNum.innerHTML = Math.floor((Math.random() * 36) + 1);
             }, 500)
