@@ -20,33 +20,17 @@ let multi = [red, black, even, odd, frst12, scnd12, thrd12, frsthalf, scndhalf, 
 let credit = 500;
 let totals = [];
 var sec = 11;
-// let div.one = ;
-// let div.five = ;
-// let div.ten = ;
-// let div.twentyfive = ; 
-// let div.hundred = ;
 
 /*----- cached element references -----*/
 allCells = document.getElementsByClassName(`cell`)
-
-/*----- event listeners -----*/ 
-document.querySelector('table.board').addEventListener('click', placeBet);
 let betTime = document.getElementById('betTime');
 let msg = document.getElementById('msg');
 let rNum = document.getElementById('rNum');
+let reset = document.getElementById('reset')
 
-// for(var i = 0; i < allCells.length; i++){
-//     // console.log("HELLO", allCells[i])
-//     allCells[i].style.backgroundImage = ''
-// } 
-//on click input value of bet selected
-//on click select 1-18, 19-36, even, odds, red, black, 1st 12, 2nd 12, last 12
-//on click reset button clears board and resets credit limit
-// document.querySelector('table.board').addEventListener('click', timer);
-//on click initialize timer after 10 seconds no more bets are allowed.. wait 3 more seconds and show wheelNum
-// document.querySelector('div.chips').addEventListener('click', value);
-//on click selects the chip value selected
-
+/*----- event listeners -----*/ 
+document.querySelector('table.board').addEventListener('click', placeBet);
+reset.addEventListener('click', init)
 
 /*----- functions -----*/
 init ();
@@ -80,11 +64,8 @@ function init() {
 function placeBet (evt) {
     let targetId = evt.target.id;
     let cIdx = parseInt(targetId.replace('c', ''));
-    console.log(cIdx);
     let rowIdx = targetId.substring(targetId.length - 2).replace('r','');
     let rIdx = parseInt(rowIdx);
-    let fired = false;
-    console.log(rIdx);
     changeBoard(board, cIdx, rIdx);
     if (sec === 11) {
         timer ();   
@@ -98,15 +79,14 @@ function placeBet (evt) {
             sec--;
             if (sec < 0) {
                 clearInterval(timer);
+                clearInterval(randomNum)
             }
         }, 1000);
-        function randomNum(){
-            setInterval(()=>{
+        var randomNum = setInterval(()=>{
             rNum.innerHTML = Math.floor((Math.random() * 36) + 1);
             }, 500)
-            return;
+            
         }
-        randomNum();
         function time(){
             setTimeout(()=>{
                 winner();
@@ -121,7 +101,7 @@ function placeBet (evt) {
                 alert = ('Bet has already been placed here'); 
             }
         }
-    }
+    
 
 function winner () {
     board.forEach((x, y) => {
@@ -135,11 +115,9 @@ function check(){
         x.forEach(function(i, j) {
             if (wheelNum === i.number) {
                 msg.innerHTML = 'Congrats you hit!';
-                init();
                 return;
              } 
             else msg.innerHTML = 'Better luck next time!';
-                init();
         })
     })
 };
