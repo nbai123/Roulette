@@ -4,8 +4,8 @@
 
 body {
     display: grid;
-    grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    /* grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(5, 1fr); */
     position: auto;
     background-color: green;
 }
@@ -32,11 +32,12 @@ div.cell {
     margin: 5px;
     align-items: center;
     float: left;
-    grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    font-size: 36px;
+    /* grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(5, 1fr); */
     color: white;
+    size: fill;
 }
-
 div {
     display: flex;
     float: left;
@@ -53,3 +54,29 @@ div#c1r1,#c1r3,#c2r2,#c3r1,#c3r3,#c4r3,#c5r2,#c6r1,#c6r3,#c7r1,#c7r3,#c8r2,#c9r1
 div#c1r2,#c2r1,#c2r3,#c3r2,#c4r1,#c4r2,#c5r1,#c5r3,#c6r2,#c7r2,#c8r1,#c8r3,#c9r2,#c10r1,#c10r2,#c11r1,#c11r3,#c12r2 {
     background-color: black;
 }
+
+button {
+    background-color: black;
+    color: white;
+    border: 0;
+    border-radius: 10%;
+    width: 10%;
+    height: 50px;
+}
+
+.display {
+    padding: 10px;
+    position: relative;
+    margin: 5px;
+    flex-direction: column;
+}
+
+h2 {
+    /* padding: 10px; */
+    margin: 5px;
+}
+
+#msg, #rNum {
+    visibility: hidden;
+}
+

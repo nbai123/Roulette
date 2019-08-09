@@ -30,7 +30,7 @@ let reset = document.getElementById('reset')
 
 /*----- event listeners -----*/ 
 document.querySelector('table.board').addEventListener('click', placeBet);
-reset.addEventListener('click', init)
+reset.addEventListener('click', init);
 
 /*----- functions -----*/
 init ();
@@ -74,7 +74,8 @@ function placeBet (evt) {
     function timer(){
         sec = 10;
         var timer = setInterval(function(){
-            betTime.innerHTML = '00:'+sec;
+            betTime.innerHTML = 'Bet timer: '+sec;
+            msg.style.visibility = "visible";
             msg.innerHTML = 'Spinning';
             sec--;
             if (sec < 0) {
@@ -83,6 +84,7 @@ function placeBet (evt) {
             }
         }, 1000);
         var randomNum = setInterval(()=>{
+            rNum.style.visibility = "visible";
             rNum.innerHTML = Math.floor((Math.random() * 36) + 1);
             }, 500)
             
@@ -108,6 +110,7 @@ function winner () {
         totals.push(x.filter(b => b.bet === true))
     });
     check();
+    rNum.innerHTML = (`${wheelNum} was the winning number`);
 };
 
 function check(){ 
